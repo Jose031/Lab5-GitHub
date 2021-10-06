@@ -78,7 +78,10 @@ void loop()
   voltaje1();
   voltaje2();
   UPC();
+  USART();
+  funcionamientoLEDS();
   delay(250);
+}
 //**********************************************************************************************************************
 // Fuinciones
 //**********************************************************************************************************************
@@ -193,4 +196,21 @@ void USART(void)
       }
     }
   }
+}
+void funcionamientoLEDS(void)
+{
+  //LED ROJO
+  // Mapeo manual para obtener valores de voltaje en el rango de 0-255
+  voltaje = analogRead(pot1);
+  voltaje = voltaje * 256 / 4096;
+  ledcWrite(pwmChledR, voltaje); // Control PWM
+
+  //LED VERDE
+  // Mapeo manual para obtener valores de voltaje en el rango de 0-255
+  voltajeB = analogRead(pot2);
+  voltajeB = voltajeB * 256 / 4096;
+  ledcWrite(pwmChledV, voltajeB); // Control PWM
+
+  //LED CONTADOR
+  ledcWrite(pwmChledA, contador); // Control PWM
 }
