@@ -39,6 +39,9 @@
 void voltaje1(void); // Función para la impresión del voltaje del potenciometro 1
 void voltaje2(void); // Función para la impresión del voltaje del potenciometro 2
 void UPC(void);      // Función para la impresión del contador en la LCD
+void USART(void);    //Función de comunicación USART
+void configurarPWM(void);
+void funcionamientoLEDS(void);
 //**********************************************************************************************************************
 // Variables Globales
 //**********************************************************************************************************************
