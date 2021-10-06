@@ -52,6 +52,8 @@ uint8_t centenas, decenas2, unidades2;
 int adcRaw;
 int contador = 0;
 float voltaje;
+float voltajeB;
+char control = 0;
 //**********************************************************************************************************************
 // ISR: Interrupciones
 //**********************************************************************************************************************
@@ -63,6 +65,7 @@ void setup()
 {
   // Velocidad a la que trabaja la comunicación serial
   Serial.begin(115200);
+  configurarPWM();
   // Se establece que la LCD utilizada es de 16x2
   LCD.begin(16, 2);
 }
@@ -79,6 +82,17 @@ void loop()
 //**********************************************************************************************************************
 // Fuinciones
 //**********************************************************************************************************************
+void configurarPWM(void)
+{
+  // Paso 1: configurar PWM
+  ledcSetup(pwmChledR, 60, resolucion);
+  ledcSetup(pwmChledV, 60, resolucion);
+  ledcSetup(pwmChledA, 60, resolucion);
+  // Paso 2: Seleccionar en que GPIO tendremos nuestra onda PWM
+  ledcAttachPin(ledR, pwmChledR);
+  ledcAttachPin(ledV, pwmChledV);
+  ledcAttachPin(ledA, pwmChledA);
+}
 void voltaje1(void) // Voltaje potenciometro 1
 {
   // Conversión de señal ADC a miliVoltios
