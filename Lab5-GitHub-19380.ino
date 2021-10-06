@@ -21,6 +21,18 @@
 #define rs 21
 #define pot1 34
 #define pot2 35
+// Definición de las varaibles de salida de los leds con sus respectivo numero de pin
+#define ledR 33
+#define ledV 27
+#define ledA 13
+
+// Definción de varaibles para la configuración del PWM
+#define pwmChledR 0  // 16 Canales 0-15
+#define pwmChledV 1  // 16 Canales 0-15
+#define pwmChledA 2  // 16 Canales 0-15
+#define freqPWM 50   // Frecuencia en Hz
+#define resolucion 8 // 1-16 bits de resolucion
+
 //**********************************************************************************************************************
 // Prototipo de Funciones
 //**********************************************************************************************************************
