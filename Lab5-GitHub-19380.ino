@@ -155,3 +155,42 @@ void UPC(void) // Valor contador
   LCD.print(decenas2);
   LCD.print(unidades2);
 }
+void USART(void)
+{
+  if (Serial.available() > 0) // Condición que permite verficar si hay bytes disponibles en el buffer de registro
+  {
+    control = Serial.read();
+
+    //Impresion monitor potenciometro 1 (Rojo)
+    Serial.println("****************RESULTADOS*******************");
+    Serial.print("Rojo: ");
+    Serial.print(decenas);
+    Serial.print('.');
+    Serial.print(unidades);
+    Serial.println(decimal);
+    //Impresion monitor potenciometro 2 (Verde)
+    Serial.print("Verde: ");
+    Serial.print(decenas1);
+    Serial.print('.');
+    Serial.print(unidades1);
+    Serial.println(decimal1);
+
+    // Control contador
+    if (control == '+') //Condición que permite aumentar el contador con la tecla "+""
+    {
+      contador++;
+      if (contador > 255)
+      { // Condición que establece que el contador no se mayor al numero de condiciones que se tiene.
+        contador = 0;
+      }
+    }
+    if (control == '-') //Condición que permite decrecer el contador con la tecla "-""
+    {
+      contador--;
+      if (contador < 0)
+      { // Condición que establece que el contador no tenga valores negativos.
+        contador = 0;
+      }
+    }
+  }
+}
